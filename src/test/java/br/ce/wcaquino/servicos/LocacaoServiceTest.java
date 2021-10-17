@@ -18,6 +18,8 @@ import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 
+import static br.ce.wcaquino.matchers.MatchersProject.dayMonday;
+import static br.ce.wcaquino.matchers.MatchersProject.dayWeek;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import br.ce.wcaquino.entidades.Filme;
@@ -25,6 +27,8 @@ import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.exceptions.FilmeSemEstoqueException;
 import br.ce.wcaquino.exceptions.LocadoraException;
+import br.ce.wcaquino.matchers.DayWeekMatcher;
+import br.ce.wcaquino.matchers.MatchersProject;
 import br.ce.wcaquino.utils.DataUtils;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -162,8 +166,10 @@ public class LocacaoServiceTest {
 		
 		
 	
-		Assert.assertThat(DataUtils.verificarDiaSemana(locacao.getDataRetorno(),Calendar.MONDAY),is(true));
-		
+	//	Assert.assertThat(DataUtils.verificarDiaSemana(locacao.getDataRetorno(),Calendar.MONDAY),is(true));
+	//	Assert.assertThat(locacao.getDataRetorno(), new DayWeekMatcher(Calendar.MONDAY));
+	//	Assert.assertThat(locacao.getDataRetorno(),dayWeek(Calendar.MONDAY));
+		Assert.assertThat(locacao.getDataRetorno(),dayMonday());
 	}
 	
 	
