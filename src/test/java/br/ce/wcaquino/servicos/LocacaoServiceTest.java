@@ -21,6 +21,9 @@ import org.junit.runners.MethodSorters;
 import static br.ce.wcaquino.matchers.MatchersProject.dayMonday;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+
+import br.ce.wcaquino.builders.FilmeBuilder;
+import br.ce.wcaquino.builders.UsuarioBuilder;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
@@ -46,8 +49,8 @@ public class LocacaoServiceTest {
 	@Before
 	public void setup() {
 		service = new LocacaoService();
-		usuario = new Usuario("Usuario 1");
-		filme = Arrays.asList(new Filme("Filme 1",0, 5.0));
+		usuario = UsuarioBuilder.umUsuario().agora();
+		filme = Arrays.asList(FilmeBuilder.umFilme().agora());
 	}
 	
 	@Test
