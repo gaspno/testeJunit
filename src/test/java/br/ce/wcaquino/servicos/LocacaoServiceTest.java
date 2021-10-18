@@ -19,7 +19,6 @@ import org.junit.rules.ExpectedException;
 import org.junit.runners.MethodSorters;
 
 import static br.ce.wcaquino.matchers.MatchersProject.dayMonday;
-import static br.ce.wcaquino.matchers.MatchersProject.dayWeek;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import br.ce.wcaquino.entidades.Filme;
@@ -27,7 +26,7 @@ import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.exceptions.FilmeSemEstoqueException;
 import br.ce.wcaquino.exceptions.LocadoraException;
-import br.ce.wcaquino.matchers.DayWeekMatcher;
+
 import br.ce.wcaquino.matchers.MatchersProject;
 import br.ce.wcaquino.utils.DataUtils;
 
@@ -65,7 +64,8 @@ public class LocacaoServiceTest {
 			errorCollector.checkThat( locacao.getValor(),is((equalTo(5.0))));
 			errorCollector.checkThat(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()),is(true));
 			errorCollector.checkThat(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)),is(true));
-		
+			errorCollector.checkThat(locacao.getDataRetorno(),MatchersProject.nextDay());
+			
 		
 	}
 	
